@@ -9,7 +9,7 @@ AACProjectGameMode::AACProjectGameMode()
 {
 	ActorGenerated = false;
 	/*
-	 * 获取飞机ID与障碍物ID
+	 * 游戏开始时获取飞机ID与障碍物ID
 	 * 存储在PlaneIdArray和ObjectIdArray当中
 	 */
 	FString PlaneIds;
