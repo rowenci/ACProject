@@ -73,6 +73,7 @@ void AMovementActor::Tick(float DeltaTime)
 							// 获取该飞机上一帧的坐标
 							FVector lastLocation = gm->LastPlaneLocationMap[id];
 							// 设置第一辆生成的飞机的位置
+							// 使用GetName来获取对应id的飞机，然后对位置进行设置
 							if (planeItr->GetName() == "MyAPlane_C_" + FString::FromInt(id)) {
 								planeItr->SetActorLocation(location);
 								// GetWorld()->SpawnActor<AATrackLine>(TrackLineType, location, FRotator::ZeroRotator);
