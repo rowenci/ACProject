@@ -13,5 +13,7 @@ UCLASS()
 class ACPROJECT_API AACProjectGameState : public AGameStateBase
 {
 	GENERATED_BODY()
-	
+
+public:
+	AACProjectGameState();
 };

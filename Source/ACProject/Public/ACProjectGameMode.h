@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ACProjectGameState.h"
 #include "GameFramework/GameModeBase.h"
 #include "ACProjectGameMode.generated.h"
 
@@ -28,4 +29,20 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	TMap<int, FVector> LastPlaneLocationMap;
+
+	UPROPERTY(EditAnywhere)
+	FString PlaneFileName;
+	
+	UPROPERTY(EditAnywhere)
+	FString ObjectFileName;
+
+	UPROPERTY(EditAnywhere)
+	FString Directory;
+
+	UPROPERTY(EditAnywhere)
+	int frame;
+
+	UPROPERTY(EditAnywhere)
+	int frame_count;
+
 };

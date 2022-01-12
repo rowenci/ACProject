@@ -14,6 +14,7 @@ AAPlane::AAPlane()
     //RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	MeshComponent->SetupAttachment(RootComponent);
+
 	
 }
 
@@ -21,13 +22,11 @@ AAPlane::AAPlane()
 void AAPlane::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void AAPlane::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 

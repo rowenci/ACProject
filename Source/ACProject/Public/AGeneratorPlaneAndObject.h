@@ -24,6 +24,9 @@ public:
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<AAObj> CarType;
 
+	UPROPERTY(VisibleAnywhere)
+	FString FirstFrameFile;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -34,6 +37,4 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	bool Generator(int id, FVector location, FRotator rotator, bool isPlane);
-
-
 };

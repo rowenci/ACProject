@@ -6,10 +6,8 @@
 #include "ACProjectGameMode.h"
 #include "AObj.h"
 #include "APlane.h"
-#include "ATrackLine.h"
 #include "DrawDebugHelpers.h"
 #include "EngineUtils.h"
-#include "Components/LineBatchComponent.h"
 
 // Sets default values
 AMovementActor::AMovementActor()
@@ -17,20 +15,18 @@ AMovementActor::AMovementActor()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	frame = 900;
-	frame_count = 1;
-	Directory = "D:\\code\\codes\\Data\\print";
-	
 	LineLifeTime = 100.f;
 }
-
-
 
 // Called when the game starts or when spawned
 void AMovementActor::BeginPlay()
 {
 	Super::BeginPlay();
 	gm = Cast<AACProjectGameMode>(GetWorld()->GetAuthGameMode());
+	// 参数设置
+	Directory = gm->Directory;
+	frame = gm->frame;
+	frame_count = gm->frame_count;
 }
 
 // Called every frame
@@ -38,10 +34,9 @@ void AMovementActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 	flag = gm->ActorGenerated;
-	LineBatch = GetWorld()->PersistentLineBatcher;	//GetDebugLineBatcher(GetWorld(), bPersistentLines, LifeTime, (DepthPriority == SDPG_Foreground));
 	if(flag)
 	{
-		if (frame_count <= frame)
+		if (frame_count < frame)
 		{
 			TArray<FString> dataLine;
 			FFileHelper::LoadFileToStringArray(dataLine, *(Directory + "\\" + FString::FromInt(frame_count) + ".txt"));
@@ -80,12 +75,18 @@ void AMovementActor::Tick(float DeltaTime)
 								planeItr->SetActorRotation(rotator);
 
 								// 画线
-								if (LineBatch != nullptr)
-								{
+								//if (LineBatch != nullptr)
+								//{
 									// LineBatch->DrawLine(lastLocation, location, FLinearColor::Blue, 10, 50.0f, LineLifeTime);
+									// LineBatch->SetupAttachment(RootComponent);
 									// DrawDebugLine(GetWorld(), lastLocation, location, FColor::Blue, false, LineLifeTime, 10, 50.0f);
+									
+								//}
+								if(!lastLocation.Equals(location))
+								{
 									DrawDebugPoint(GetWorld(), location, 10.0f, FColor::Blue,  false, LineLifeTime, 10);
 								}
+								
 								// 画完后更改对应的坐标
 								gm->LastPlaneLocationMap[id] = location;
 							}

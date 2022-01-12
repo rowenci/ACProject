@@ -30,9 +30,6 @@ public:
 	FString Directory;
 
 	UPROPERTY(VisibleAnywhere)
-	FString FileDirectory;
-
-	UPROPERTY(VisibleAnywhere)
 	AACProjectGameMode* gm;
 
 	UPROPERTY(VisibleAnywhere)
@@ -44,8 +41,11 @@ public:
 	UPROPERTY(EditAnywhere)
 	float LineLifeTime;
 
-	//UPROPERTY(EditAnywhere)
-	//TSubclassOf<AATrackLine> TrackLineType;
+	// UPROPERTY(EditAnywhere)
+	// UActorComponent* TraceLineComponent;
+
+	// UPROPERTY(EditAnywhere)
+	// TSubclassOf<AATrackLine> TrackLineType;
 
 	UFUNCTION()
 	void Delay();

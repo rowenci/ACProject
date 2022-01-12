@@ -28,8 +28,8 @@ void AAGeneratorPlaneAndObject::BeginPlay()
 			// 开始生成
 			// 读取第一个文件的数据
 			TArray<FString> dataLine;
-			FString FileName = "D:\\code\\codes\\Data\\print\\0.txt";
-			FFileHelper::LoadFileToStringArray(dataLine, *FileName);
+			FirstFrameFile = gm->Directory + "\\0.txt";
+			FFileHelper::LoadFileToStringArray(dataLine, *FirstFrameFile);
 			// 遍历文件中的数据来生成飞机和障碍物
 			for (auto dataOrigin : dataLine)
 			{
@@ -80,6 +80,7 @@ bool AAGeneratorPlaneAndObject::Generator(int id, FVector location, FRotator rot
 	if(isPlane)
 	{
 		// 生成AActor实例使用SpawnActor
+		// FActorSpawnParameters::
 		GetWorld()->SpawnActor<AAPlane>(PlaneType, location, rotator);
 	}
 	else

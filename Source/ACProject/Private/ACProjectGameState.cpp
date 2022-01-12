@@ -3,3 +3,6 @@
 
 #include "ACProjectGameState.h"
 
+AACProjectGameState::AACProjectGameState()
+{
+}

@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "ATrackLine.h"
 #include "GameFramework/Actor.h"
 #include "APlane.generated.h"
 
@@ -25,5 +26,4 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
 };

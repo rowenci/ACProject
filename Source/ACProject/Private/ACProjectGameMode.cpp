@@ -3,6 +3,7 @@
 
 #include "ACProjectGameMode.h"
 
+#include "ACProjectGameState.h"
 #include "Kismet/KismetSystemLibrary.h"
 
 AACProjectGameMode::AACProjectGameMode()
@@ -14,16 +15,15 @@ AACProjectGameMode::AACProjectGameMode()
 	 */
 	FString PlaneIds;
 	FString ObjectIds;
-	FString PlaneFileName = "D:\\code\\codes\\Data\\print\\index_plane.txt";
-	FString ObjectFileName = "D:\\code\\codes\\Data\\print\\index_ob.txt";
-	
+	PlaneFileName = "E:\\Data\\print\\index_plane.txt";
+	ObjectFileName = "E:\\Data\\print\\index_ob.txt";
 	FFileHelper::LoadFileToString(PlaneIds, *(PlaneFileName));
 	FFileHelper::LoadFileToString(ObjectIds, *(ObjectFileName));
 
 	PlaneIds.ParseIntoArray(PlaneIdArray, TEXT(" "), false);
 	ObjectIds.ParseIntoArray(ObjectIdArray, TEXT(" "), false);
 	PlaneIdArray.RemoveAt(PlaneIdArray.Num() - 1);
-	ObjectIds.RemoveAt(ObjectIdArray.Num() - 1);
+	ObjectIdArray.RemoveAt(ObjectIdArray.Num() - 1);
 
 	for (auto PlaneId : PlaneIdArray)
 	{
