@@ -45,4 +45,10 @@ public:
 	UPROPERTY(EditAnywhere)
 	int frame_count;
 
+	UPROPERTY(VisibleAnywhere)
+	bool GameControlBegin = false;
+
+	UPROPERTY(VisibleAnywhere)
+	bool GameControlReset = false;
+
 };

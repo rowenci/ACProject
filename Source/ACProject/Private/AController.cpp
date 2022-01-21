@@ -21,11 +21,23 @@ void AAController::BeginPlay()
 void AAController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
-void AAController::GenerateMovementActor()
+void AAController::BeginSimulate()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, FString(TEXT("generate movement actor")));
-	GetWorld()->SpawnActor<AMovementActor>(FVector(.0f, .0f, .0f), FRotator::ZeroRotator);
+	AACProjectGameMode* gm = Cast<AACProjectGameMode>(GetWorld()->GetAuthGameMode());
+	if (gm != nullptr)
+	{
+		gm->GameControlBegin = true;
+	}
 }
+
+void AAController::ResetSimulate()
+{
+	AACProjectGameMode* gm = Cast<AACProjectGameMode>(GetWorld()->GetAuthGameMode());
+	if (gm != nullptr)
+	{
+		gm->GameControlReset = true;
+	}
+}
+

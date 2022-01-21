@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ACProjectGameMode.h"
+#include "AGeneratorPlaneAndObject.h"
 #include "GameFramework/Actor.h"
 #include "AController.generated.h"
 
@@ -25,10 +26,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable)
-	void GenerateMovementActor();
+	void BeginSimulate();
 
-	UPROPERTY(VisibleAnywhere)
-	int i;
-
-
+	UFUNCTION(BlueprintCallable)
+	void ResetSimulate();
 };
